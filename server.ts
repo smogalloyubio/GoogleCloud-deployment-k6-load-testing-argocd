@@ -20,7 +20,7 @@ async function ensureDataFile() {
 async function startServer() {
   await ensureDataFile();
   const app = express();
-  const PORT = 3000; // Hardcoded per platform requirements
+  const PORT = Number(process.env.PORT ?? 3000);
 
   app.use(express.json());
 
@@ -89,7 +89,7 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`FreshTrack server running on http://localhost:${PORT}`);
+    console.log(`FreshTrack server running on http://0.0.0.0:${PORT}`);
   });
 }
 
