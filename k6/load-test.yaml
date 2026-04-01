@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: k6
-          image: rukevweubio/my-k6-test:latest
+          image:  rukevweubio/my-k6-test:latest
           args: ["run", "load.js"]
           env:
             - name: BASE_URL

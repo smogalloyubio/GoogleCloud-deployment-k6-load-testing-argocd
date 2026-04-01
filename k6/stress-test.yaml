@@ -7,7 +7,7 @@ spec:
     spec:
       containers:
         - name: k6
-          image: your-dockerhub-username/k6-tests:latest
+          image: rukevweubio/my-k6-test:latest
           args: ["run", "stress.js"]
           env:
             - name: BASE_URL
