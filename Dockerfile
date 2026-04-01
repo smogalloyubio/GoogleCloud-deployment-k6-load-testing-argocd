@@ -8,13 +8,14 @@ COPY package*.json ./
 RUN npm install
 
 # Copy source files
-COPY . .
+COPY   tsconfig.json  vite.config.ts  serve.ts  metadata.json index.html /src  node_modules /app
 
 # Build the frontend assets
 RUN npm run build
 
-# Compile the TypeScript server to JavaScript for production
-RUN npx tsc server.ts --outDir /app/dist --module ES2022 --target ES2022 --moduleResolution bundler --noEmit false
+COPY tsconfig.json vite.config.ts index.html metadata.json ./
+COPY src ./src
+COPY server.ts ./server.ts
 
 # Final runtime image
 FROM node:20-slim AS runner
